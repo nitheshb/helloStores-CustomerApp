@@ -22,7 +22,10 @@ class App extends StatelessWidget {
       getPages: AppRoutes.pages,
 
       /// Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen.
-      home: const Scaffold(backgroundColor: TColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white))),
+      home: const Scaffold(
+          backgroundColor: TColors.primary,
+          body: Center(child:
+          CircularProgressIndicator(color: Colors.white))),
     );
   }
 }
