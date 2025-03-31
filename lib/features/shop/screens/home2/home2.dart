@@ -15,7 +15,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
     {"img": "image 63.png", "text": "Golden Glass\n Wooden Lid Candle (Oudh)"},
   ];
   var data = [
-    {"img": "image 50.png", "text": "Lights, Diyas \n & Candles"},
+    {"img": "image 51.png", "text": "Lights, Diyas \n & Candles"},
     {"img": "image 51.png", "text": "Diwali \n Gifts"},
     {"img": "image 52.png", "text": "Appliances  \n & Gadgets"},
     {"img": "image 53.png", "text": "Home \n & Living"}

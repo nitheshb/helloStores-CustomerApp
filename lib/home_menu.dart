@@ -30,7 +30,11 @@ class HomeMenu extends StatelessWidget {
           onDestinationSelected: (index) => controller.selectedMenu.value = index,
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Category'),
+            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home2'),
+
+            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Cate'),
+            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Cate2'),
+
             NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
             NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
           ],
@@ -47,9 +51,10 @@ class AppScreenController extends GetxController {
   final Rx<int> selectedMenu = 0.obs;
 
   final screens = [
-     HomeScreen2(),
-    //const HomeScreen(),
-   // const StoreScreen(),
+
+    const HomeScreen(),
+    HomeScreen2(),
+   const StoreScreen(),
     CategoryScreen(),
     const FavouriteScreen(),
     const SettingsScreen()];
