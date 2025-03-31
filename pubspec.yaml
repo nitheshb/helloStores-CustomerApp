@@ -71,6 +71,8 @@ flutter:
   #--------------- LOCAL ASSETS ------------------#
   assets:
     - assets/logos/
+    - assets/images/home2/
+    - assets/images/category/
     - assets/icons/brands/
     - assets/images/content/
     - assets/images/banners/
@@ -83,6 +85,12 @@ flutter:
 
   #--------------- LOCAL FONTS ------------------#
   fonts:
+    - family: bold
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+    - family: regular
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Light.ttf

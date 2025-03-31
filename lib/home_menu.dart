@@ -1,3 +1,4 @@
+import 'package:cwt_ecommerce_app/features/shop/screens/category/category.dart';
 import 'package:cwt_ecommerce_app/utils/constants/colors.dart';
 import 'package:cwt_ecommerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import 'features/personalization/screens/setting/settings.dart';
 import 'features/shop/screens/favourites/favourite.dart';
 import 'features/shop/screens/home/home.dart';
+import 'features/shop/screens/home2/home2.dart';
 import 'features/shop/screens/store/store.dart';
 
 class HomeMenu extends StatelessWidget {
@@ -28,7 +30,7 @@ class HomeMenu extends StatelessWidget {
           onDestinationSelected: (index) => controller.selectedMenu.value = index,
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
+            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Category'),
             NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
             NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
           ],
@@ -44,5 +46,11 @@ class AppScreenController extends GetxController {
 
   final Rx<int> selectedMenu = 0.obs;
 
-  final screens = [const HomeScreen(), const StoreScreen(), const FavouriteScreen(), const SettingsScreen()];
+  final screens = [
+     HomeScreen2(),
+    //const HomeScreen(),
+   // const StoreScreen(),
+    CategoryScreen(),
+    const FavouriteScreen(),
+    const SettingsScreen()];
 }
