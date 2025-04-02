@@ -72,6 +72,7 @@ flutter:
   assets:
     - assets/logos/
     - assets/images/home2/
+    - assets/images/cart2/
     - assets/images/category/
     - assets/icons/brands/
     - assets/images/content/

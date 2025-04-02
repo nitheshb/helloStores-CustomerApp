@@ -1,3 +1,4 @@
+import 'package:cwt_ecommerce_app/features/shop/cart2/cart2.dart';
 import 'package:cwt_ecommerce_app/features/shop/screens/category/category.dart';
 import 'package:cwt_ecommerce_app/utils/constants/colors.dart';
 import 'package:cwt_ecommerce_app/utils/helpers/helper_functions.dart';
@@ -20,7 +21,10 @@ class HomeMenu extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: Obx(
-        () => NavigationBar(
+        () =>
+        controller.selectedMenu.value == 5 // Cart2 index
+            ? const SizedBox.shrink()
+            : NavigationBar(
           height: 80,
           animationDuration: const Duration(seconds: 3),
           selectedIndex: controller.selectedMenu.value,
@@ -35,7 +39,9 @@ class HomeMenu extends StatelessWidget {
             NavigationDestination(icon: Icon(Iconsax.shop), label: 'Cate'),
             NavigationDestination(icon: Icon(Iconsax.shop), label: 'Cate2'),
 
-            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
+            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Cart 1'),
+            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Cart 2'),
+
             NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
           ],
         ),
@@ -57,5 +63,6 @@ class AppScreenController extends GetxController {
    const StoreScreen(),
     CategoryScreen(),
     const FavouriteScreen(),
+     Cart2(),
     const SettingsScreen()];
 }
