@@ -1,3 +1,4 @@
+import 'package:cwt_ecommerce_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,8 +17,13 @@ Future<void> main() async {
   /// -- GetX Local Storage
   await GetStorage.init();
 
+
   /// -- Overcome from transparent spaces at the bottom in iOS full Mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ));
 
   /// -- Await Splash until other items Load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
