@@ -1,5 +1,6 @@
-import 'package:cwt_ecommerce_app/features/shop/cart2/cart2.dart';
+import 'package:cwt_ecommerce_app/features/shop/screens/cart/cart.dart';
 import 'package:cwt_ecommerce_app/features/shop/screens/category/category.dart';
+import 'package:cwt_ecommerce_app/features/shop/screens/reorder/reorder.dart';
 import 'package:cwt_ecommerce_app/utils/constants/colors.dart';
 import 'package:cwt_ecommerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'features/personalization/screens/setting/settings.dart';
+import 'features/shop/screens/HomePage/homepage.dart';
 import 'features/shop/screens/favourites/favourite.dart';
 import 'features/shop/screens/home/home.dart';
 import 'features/shop/screens/home2/home2.dart';
@@ -21,34 +23,57 @@ class HomeMenu extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: Obx(
-        () =>
-        controller.selectedMenu.value == 5 // Cart2 index
+            () => controller.selectedMenu.value == 5
             ? const SizedBox.shrink()
             : NavigationBar(
           height: 80,
-          animationDuration: const Duration(seconds: 3),
           selectedIndex: controller.selectedMenu.value,
-          backgroundColor: THelperFunctions.isDarkMode(context) ? TColors.black : Colors.white,
+          backgroundColor: THelperFunctions.isDarkMode(context)
+              ? TColors.black
+              : Colors.white,
           elevation: 0,
-          indicatorColor: THelperFunctions.isDarkMode(context) ? TColors.white.withOpacity(0.1) : TColors.black.withOpacity(0.1),
-          onDestinationSelected: (index) => controller.selectedMenu.value = index,
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home2'),
-
-            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Cate'),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Cate2'),
-
-            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Cart 1'),
-            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Cart 2'),
-
-            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
+          indicatorColor: Colors.transparent, // disable default indicator
+          onDestinationSelected: (index) =>
+          controller.selectedMenu.value = index,
+          destinations: [
+            buildCustomDestination(Icons.home_filled, 'Home', 0, controller),
+            buildCustomDestination(Icons.shopping_bag_outlined, 'Order Again', 1, controller),
+            buildCustomDestination(Icons.grid_view, 'Categories', 2, controller),
+            buildCustomDestination(Icons.local_print_shop_outlined, 'Cart', 3, controller),
           ],
         ),
       ),
       body: Obx(() => controller.screens[controller.selectedMenu.value]),
     );
   }
+  NavigationDestination buildCustomDestination(
+      IconData icon, String label, int index, AppScreenController controller) {
+    final isSelected = controller.selectedMenu.value == index;
+   // var width = MediaQuery.of(context).size.width;
+
+    return NavigationDestination(
+      label: label,
+      icon: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 4,
+            width: 34,
+            decoration: BoxDecoration(
+              color: isSelected ? Colors.green : Colors.transparent,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(height: 4),
+          Icon(
+            icon,
+            color: isSelected ? Colors.green : Colors.grey,
+          ),
+        ],
+      ),
+    );
+  }
+
 }
 
 class AppScreenController extends GetxController {
@@ -58,11 +83,10 @@ class AppScreenController extends GetxController {
 
   final screens = [
 
-    const HomeScreen(),
-    HomeScreen2(),
-   const StoreScreen(),
+    HomePage(),
+    Reorder(),
     CategoryScreen(),
-    const FavouriteScreen(),
-     Cart2(),
-    const SettingsScreen()];
+    CartScreen()
+  ];
+
 }
